@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'exampage.dart';
 
 class ListExamPage extends StatefulWidget {
   @override
@@ -15,15 +16,24 @@ class _ListExamPageState extends State<ListExamPage> {
         appBar: AppBar(
           title: Text('Thi sát hạch'),
         ),
-        body: Container(
-          child: Exam(context),
+        body: GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+//                                initializeDatabase();
+              return ExamPage();
+            }));
+            print('123');
+          },
+          child: Container(
+            child: exam(context),
+          ),
         ),
       ),
     );
   }
 }
 
-Widget Exam(context) {
+Widget exam(context) {
   return Card(
     child: Container(
       width: MediaQuery.of(context).size.width,

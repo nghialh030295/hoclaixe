@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hoclaixe/db.dart';
 import 'package:hoclaixe/listexam.dart';
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -14,12 +16,6 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(
             'Ôn thi GPLX B2',
           ),
-//            actions: <Widget>[
-//              IconButton(icon:  Icon(Icons.search),
-//                onPressed: (){},
-//              ),
-//            ],
-//        iconTheme: IconThemeData(color: Colors.black, opacity: 1,size: 50 )
         ),
         body: Column(
           children: <Widget>[
@@ -38,9 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () {
                       Navigator.push(
                           context,
-//                    MaterialPageRoute(builder: (context) => CheckinPage(data[i],stream)));
                           MaterialPageRoute(
-                              builder: (context) => ListExamPage()));
+                              builder: (context) {
+//                                initializeDatabase();
+                                return ListExamPage();
+                              }));
+                      initializeDatabase();
                       print('123');
                     },
                     child: optionObject(OptionObject(
@@ -87,7 +86,6 @@ Widget optionObject(OptionObject option) {
     padding: EdgeInsets.all(5),
     height: 110,
     width: 125,
-//                    color: Colors.amber,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.lightBlue, width: 2),
         borderRadius: BorderRadius.all(Radius.circular(8))),
@@ -97,13 +95,11 @@ Widget optionObject(OptionObject option) {
       children: <Widget>[
         Container(
           height: 40,
-//                          color: Colors.green,
           child: Center(
             child: option.iconOption,
           ),
         ),
         Container(
-//        color: Colors.grey,
           height: 50,
           child: Center(
             child: Text(
