@@ -13,34 +13,40 @@ String clientToJson(QuestionModel data) {
 }
 
 class QuestionModel {
-  String question;
-  String ANSWERS;
-  String OPTION1;
-  String OPTION2;
-  String OPTION3;
-  String OPTION4;
+  String zQuestion;
+  String zAnswers;
+  String zAnswerDesc;
+  String zOption1;
+  String zOption2;
+  String zOption3;
+  String zOption4;
+  String zImage;
   int zIndex;
   QuestionModel(
-      {this.question,
-      this.zIndex,
-      this.ANSWERS,
-      this.OPTION1,
-      this.OPTION2,
-      this.OPTION3,
-      this.OPTION4});
+      {this.zQuestion,
+      this.zAnswers,
+      this.zAnswerDesc,
+      this.zOption1,
+      this.zOption2,
+      this.zOption3,
+      this.zOption4,
+      this.zImage,
+        this.zIndex,});
   Map<String, dynamic> toJson() => {
-        "ZQUESTIONCONTENT": question,
+        "ZQUESTIONCONTENT": zQuestion,
         "ZINDEX": zIndex,
       };
   factory QuestionModel.fromJson(Map<String, dynamic> json) {
     return QuestionModel(
-        question: json["ZQUESTIONCONTENT"] as String,
-        zIndex: json["ZINDEX"] as int,
-      ANSWERS: json["ZANSWERS"],
-      OPTION1: json["ZOPTION1"],
-      OPTION2: json["ZOPTION2"],
-      OPTION3: json["ZOPTION3"],
-      OPTION4: json["ZOPTION4"],
+      zQuestion: json["ZQUESTIONCONTENT"] as String,
+      zAnswers: json["ZANSWERS"],
+      zAnswerDesc: json["ZANSWERDESC"],
+      zOption1: json["ZOPTION1"],
+      zOption2: json["ZOPTION2"],
+      zOption3: json["ZOPTION3"],
+      zOption4: json["ZOPTION4"],
+      zImage: json["ZIMAGE"],
+      zIndex: json["ZINDEX"] as int,
     );
   }
 }

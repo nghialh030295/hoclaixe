@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hoclaixe/db.dart';
 import 'package:hoclaixe/listexam.dart';
 
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -32,13 +31,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
 //                                initializeDatabase();
-                                return ListExamPage();
-                              }));
+                        return ListExamPage();
+                      }));
                       initializeDatabase();
                       print('123');
                     },
