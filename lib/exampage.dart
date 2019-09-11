@@ -11,16 +11,13 @@ class _ExamPageState extends State<ExamPage> {
 
   void onChange(bool b, String value) {
     selectedText = value;
-   /* print(b.toString()+":"+selectedText);
-    print(this?.q?.zOption1);
-    print(this?.q?.zOption2);
-    print(this?.q?.zOption3);*/
+
     setState(() {
 
     });
   }
 
-  QuestionModel q;
+  QuestionModel question;
   @override
   void initState() {
     super.initState();
@@ -28,7 +25,7 @@ class _ExamPageState extends State<ExamPage> {
 
     initializeDatabase().then((v) async {
       var q = await getQuestion(v);
-      this.q = q;
+      this.question = q;
       setState(() {});
     });
   }
@@ -40,11 +37,11 @@ class _ExamPageState extends State<ExamPage> {
   @override
   Widget build(BuildContext context) {
 
-    if(q==null) return Container(color: Colors.orange,);
+    if(question==null) return Container(color: Colors.orange,);
 
     var boobl = false;
     print( boobl);
-    print(selectedText);
+//    print(selectedText);
     lstQues.clear();
     lstTabs.clear();
     for (var i = 0; i < 30; i++) {
@@ -62,7 +59,7 @@ class _ExamPageState extends State<ExamPage> {
               child: Container(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  this?.q?.zQuestion ?? '',
+                  this?.question?.zQuestion ?? '',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -71,52 +68,50 @@ class _ExamPageState extends State<ExamPage> {
               height: 5,
             ),
 
-            (this.q.zImage == null)?Container(height: 50,color: Colors.orange,): Container(
-              height: 200,
-//              color: Colors.green,
+            (this.question.zImageQuestion == '')? Container() : Container(height: 200,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/imageapp/${this.q.zIndex}.webp"), fit: BoxFit.fill)),
+                      image: AssetImage("assets/imageapp/${this.question.zImageQuestion}"), fit: BoxFit.fill)),
             ),
 
             Card(
               child: CheckboxListTile(
                 onChanged: (b) {
-                  onChange(b, this?.q?.zOption1);
+                  onChange(b, this?.question?.zOption1);
                 },
-                selected: this?.q?.zOption1 == selectedText,
+                selected: this?.question?.zOption1 == selectedText,
                 value: boobl,
-                title: Text(this?.q?.zOption1),
+                title: Text(this?.question?.zOption1),
                 controlAffinity: ListTileControlAffinity.leading,
               ),
             ),
             Card(
               child: CheckboxListTile(
                 onChanged: (b) {
-                  onChange(b, this?.q?.zOption2);
+                  onChange(b, this?.question?.zOption2);
                 },
-                value: this?.q?.zOption2 == selectedText,
-                title: Text(this?.q?.zOption2),
+                value: this?.question?.zOption2 == selectedText,
+                title: Text(this?.question?.zOption2),
                 controlAffinity: ListTileControlAffinity.leading,
               ),
             ),
-            (this?.q?.zOption3 == null) ? Container() : Card(
+            (this?.question?.zOption3 == null) ? Container() : Card(
               child: CheckboxListTile(
                 onChanged: (b) {
-                  onChange(b, this?.q?.zOption3);
+                  onChange(b, this?.question?.zOption3);
                 },
-                value: this?.q?.zOption3 == selectedText,
-                title: Text(this?.q?.zOption3),
+                value: this?.question?.zOption3 == selectedText,
+                title: Text(this?.question?.zOption3),
                 controlAffinity: ListTileControlAffinity.leading,
               ),
             ),
-            (this?.q?.zOption4 == null) ? Container() : Card(
+            (this?.question?.zOption4 == null) ? Container() : Card(
               child: CheckboxListTile(
                 onChanged: (b) {
-                  onChange(b, this?.q?.zOption4);
+                  onChange(b, this?.question?.zOption4);
                 },
-                value: this?.q?.zOption4 == selectedText,
-                title: Text(this?.q?.zOption4),
+                value: this?.question?.zOption4 == selectedText,
+                title: Text(this?.question?.zOption4),
                 controlAffinity: ListTileControlAffinity.leading,
               ),
             ),

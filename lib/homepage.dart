@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hoclaixe/db.dart';
 import 'package:hoclaixe/listexam.dart';
+import 'package:hoclaixe/signpage.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -33,11 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-//                                initializeDatabase();
+                        initializeDatabase();
                         return ListExamPage();
                       }));
                       initializeDatabase();
-                      print('123');
                     },
                     child: optionObject(OptionObject(
                         iconOption: Icon(
@@ -47,20 +47,34 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         textDescription: "Thi sát hạch")),
                   ),
-                  optionObject(OptionObject(
-                      iconOption: Icon(
-                        Icons.book,
-                        size: 40,
-                        color: Colors.lightBlue,
-                      ),
-                      textDescription: "Học lý thuyết")),
-                  optionObject(OptionObject(
-                      iconOption: Icon(
-                        Icons.directions_bike,
-                        size: 40,
-                        color: Colors.lightBlue,
-                      ),
-                      textDescription: "Biển báo giao thông")),
+                  GestureDetector(
+                    onTap: () {
+                    },
+                    child: optionObject(OptionObject(
+                        iconOption: Icon(
+                          Icons.book,
+                          size: 40,
+                          color: Colors.lightBlue,
+                        ),
+                        textDescription: "Học lý thuyết")),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+//                                initializeDatabase();
+                        return SignPage();
+                      }));
+//                      initializeDatabase();
+                    },
+                    child: optionObject(OptionObject(
+                        iconOption: Icon(
+                          Icons.directions_bike,
+                          size: 40,
+                          color: Colors.lightBlue,
+                        ),
+                        textDescription: "Biển báo giao thông")),
+                  ),
                 ],
               ),
             )
